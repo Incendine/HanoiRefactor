@@ -17,6 +17,7 @@ public class Fichita {
 		this.x = x;
 		this.y = y;
 		this.ficha = ficha; 
+		this.x = x;
 	}
 
     public int getX() {
