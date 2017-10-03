@@ -27,26 +27,22 @@ public class Dibujo extends JPanel implements ActionListener, Observer {
 
 	private int nroFichas;
 	private Movimiento movimientoActual;
-	private Image[] fichas;
 	private int x, y;
 	private int ficha;
 	private Movimiento[] movimientos;
-	private Fichita posiciones;
+	private Figura posiciones;
 	private Timer timer;
-	private boolean movimientoCompletado;
 	private int paso;
 	private static final int VELOCIDAD = 1;
-	private static final int LIMITE_FICHAS = 8;
-	private static final int LIMITE_TORRES = 3;
 	private MainFrame nucleo;
-	private ArrayList<Fichita> listaPosiciones;
+	private ArrayList<Figura> listaPosiciones;
 	private Dimension screenSize;
-	private Stack<Fichita> torre1;
-	private Stack<Fichita> torre2;
-	private Stack<Fichita> torre3;
-	private Hashtable<Integer, Stack<Fichita>> ht;
-	private Stack<Fichita> tmpPUSH;
-	private Stack<Fichita> tmpPOP;
+	private Stack<Figura> torre1;
+	private Stack<Figura> torre2;
+	private Stack<Figura> torre3;
+	private Hashtable<Integer, Stack<Figura>> ht;
+	private Stack<Figura> tmpPUSH;
+	private Stack<Figura> tmpPOP;
 	
 	public Dibujo(int nroFichas, MainFrame nucleo) {
 		this.nroFichas = nroFichas;
@@ -65,28 +61,27 @@ public class Dibujo extends JPanel implements ActionListener, Observer {
 
 
 	private void inicializarComponentesDeAnimacion() {
-		listaPosiciones = new ArrayList<Fichita>();
+		listaPosiciones = new ArrayList<Figura>();
 
 		ficha = 1;
 		//Torres----
-		torre1 = new Stack<Fichita>();
-		torre2 = new Stack<Fichita>();
-		torre3 = new Stack<Fichita>();
+		torre1 = new Stack<Figura>();
+		torre2 = new Stack<Figura>();
+		torre3 = new Stack<Figura>();
 		//HashTable
-		ht = new Hashtable<Integer, Stack<Fichita>>();
+		ht = new Hashtable<Integer, Stack<Figura>>();
 		ht.put(1, torre1);
 		ht.put(2, torre2);
 		ht.put(3, torre3);
 		for (int i = 1; i <= nroFichas; i++) {
 			int w = nroFichas - i + 1;
-			posiciones= new Fichita(i, posicionXFicha(i, 1), posicionYFicha(w));
+			posiciones= new Figura(i, posicionXFicha(i, 1), posicionYFicha(w));
 			listaPosiciones.add(posiciones);
 			torre1.push(posiciones);
 		}
 		posiciones=consultarFicha(1);
 		x = posiciones.getX();
 		y = posiciones.getY();
-		movimientoCompletado = false;
 		paso = 1;
 	}
 
@@ -166,7 +161,6 @@ public class Dibujo extends JPanel implements ActionListener, Observer {
 				y++;
 				posiciones.setY(y);
 			} else {
-				movimientoCompletado = true;
 				timer.stop();
 			}
 			break;
@@ -251,7 +245,7 @@ public class Dibujo extends JPanel implements ActionListener, Observer {
 
 	}
 	
-	public Fichita consultarFicha (int ficha){
+	public Figura consultarFicha (int ficha){
 		
 		for(int i=0; i< listaPosiciones.size(); i++) {
             if(listaPosiciones.get(i).getFicha()==ficha){

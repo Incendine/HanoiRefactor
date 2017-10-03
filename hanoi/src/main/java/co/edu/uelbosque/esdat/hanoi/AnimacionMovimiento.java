@@ -11,7 +11,7 @@ public class AnimacionMovimiento extends Timer implements ActionListener {
 		super(delay, listener);       
 	}
 
-	private Fichita[] posiciones;
+	private Figura[] posiciones;
 
     private int paso;
     Movimiento movimientoActual;
@@ -38,7 +38,7 @@ public class AnimacionMovimiento extends Timer implements ActionListener {
     	
 	}
     
-    public Fichita[] getPosiciones() {
+    public Figura[] getPosiciones() {
 		return posiciones;
 	}
     
@@ -50,7 +50,7 @@ public class AnimacionMovimiento extends Timer implements ActionListener {
 	        topes[3] = 0;
 	        ficha = 1;
 	        movimientos = new Movimiento[(int) Math.pow(2, nroFichas)];
-	       posiciones = new Fichita[9];
+	       posiciones = new Figura[9];
 	        for (int i = 1; i <= nroFichas; i++) {
 	            int w = nroFichas - i + 1;
 	            //posiciones[i] = new Posicion(posicionXFicha(i, 1), posicionYFicha(w));

@@ -4,7 +4,7 @@ package co.edu.uelbosque.esdat.hanoi;
  * Clase Posicion
  * @author Daniel Alvarez
  */
-public class Fichita {
+public class Figura {
 
 
 	private int x;
@@ -13,11 +13,10 @@ public class Fichita {
     private int alto;
     private int ancho; 
 
-    public Fichita(int ficha, int x, int y ) {
+    public Figura(int ficha, int x, int y ) {
 		this.x = x;
 		this.y = y;
 		this.ficha = ficha; 
-		this.x = x;
 	}
 
     public int getX() {
